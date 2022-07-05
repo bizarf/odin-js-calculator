@@ -1,3 +1,6 @@
+let firstNum = 0;
+let secondNum = 0;
+
 // Adds two numbers
 function addNum(a, b) {
     return a += b;
@@ -18,7 +21,16 @@ function divNum(a, b) {
     return a /= b;
 }
 
-
-function operate() {
-
+// Selects the operator to be used
+function operate(operator, a, b) {
+    switch (operator) {
+        case "add":
+            return addNum(a, b);
+        case "subtract":
+            return subNum(a, b);
+        case "multiply":
+            return multiplyNum(a, b);
+        case "divide":
+            return divNum(a, b);
+    }
 }
