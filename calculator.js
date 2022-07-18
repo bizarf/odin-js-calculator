@@ -130,7 +130,7 @@ function operatorBtn(operator, operatorSignValue) {
 function operateResults() {
     if (firstValueChosen === false) {
         if (displayScreen.value === "") {
-            displayScreen.value = 0
+            displayScreen.value = 0;
             return
         } else {
             firstValue = displayScreen.value;
