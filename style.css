@@ -1,107 +1,40 @@
 #calculator-container {
-    border: solid black 2px;
-    display: grid;
-    /* grid-template-columns: 100px 100px 100px 100px 100px; */
-    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
-    /* grid-template-rows: auto; */
-    grid-auto-flow: column;
-    grid-template-areas: 
-    "display display display display display"
-    "seven eight nine . clear"
-    "four five six divide multiply"
-    "one two three subtract add"
-    "zero . decimal . equal";
-    width: 320px;
-    justify-items: center;
-    /* align-items: start; */
-    /* align-content: stretch; */
-    grid-gap: 1px;
-    /* grid-auto-rows: 50px; */
+  border: solid black 2px;
+  display: grid;
+  grid-template-columns: repeat(5, 60px);
+  grid-template-rows: minmax(auto) repeat(7, 60px);
+  max-width: 320px;
+  justify-content: center;
+  align-content: center;
+  margin: auto;
 }
 
-.buttons {
-    background-color: blue;
+button {
+  font-size: 50px;
+  border: 1px solid black;
+  outline: none;
+  font-family: "Courier New", Courier, monospace;
+}
+
+button:hover {
+  background-color: aqua;
 }
 
 #display {
-    grid-area: display;
+  grid-column: 1 / -1;
+}
+
+#previousValue,
+#displayScreen {
+  width: 300px;
+  font-variant-numeric: tabular-nums;
+  font-family: "Courier New", Courier, monospace;
 }
 
 #displayScreen {
-    width: 310px;
-    font-size: 50px;
+  font-size: 50px;
 }
 
-#zero.buttons {
-    grid-area: zero;
-}
-
-#one.buttons {
-    grid-area: one;
-}
-
-#two.buttons {
-    grid-area: two;
-}
-
-#three.buttons {
-    grid-area: three;
-}
-
-#four.buttons {
-    grid-area: four;
-}
-
-#five.buttons {
-    grid-area: five;
-}
-
-#six.buttons {
-    grid-area: six;
-}
-
-#seven.buttons {
-    grid-area: seven;
-}
-
-#eight.buttons {
-    grid-area: eight;
-}
-
-#nine.buttons {
-    grid-area: nine;
-}
-
-#decimal.buttons {
-    grid-area: decimal;
-}
-
-#add.buttons {
-    grid-area: add;
-}
-
-#subtract.buttons {
-    grid-area: subtract;
-}
-
-#multiply.buttons {
-    grid-area: multiply;
-}
-
-#divide.buttons {
-    grid-area: divide;
-}
-
-#equal.buttons {
-    grid-area: equal;
-}
-
-#clear.buttons {
-    grid-area: clear;
-}
-
-#zeroBtn, #oneBtn, #twoBtn, #threeBtn, #fourBtn, #fiveBtn, #sixBtn, #sevenBtn, #eightBtn, #nineBtn, #decimalBtn, #addBtn, #subtractBtn, #multiplyBtn, #divideBtn, #equalBtn, #clearBtn {
-    font-size: 50px;
-    width: 60px;
-    
+.span-two {
+  grid-column: span 2;
 }

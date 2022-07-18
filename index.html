@@ -1,72 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bizarf's calculator</title>
-    <script src="calculator.js" defer></script>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bizarf's calculator</title>
+  <script src="calculator.js" defer></script>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <div id="calculator-container">
-        <!-- Screen display -->
-        <div id="display">
-            <input type="text" id="displayScreen" value="" readonly maxlength="12">
-        </div>
-        <!-- Numbers -->
-        <div class="buttons" id="zero">
-            <button id="zeroBtn">0</button>
-        </div>
-        <div class="buttons" id="one">
-            <button id="oneBtn">1</button>
-        </div>
-        <div class="buttons" id="two">
-            <button id="twoBtn">2</button>
-        </div>
-        <div class="buttons" id="three">
-            <button id="threeBtn">3</button>
-        </div>
-        <div class="buttons" id="four">
-            <button id="fourBtn">4</button>
-        </div>
-        <div class="buttons" id="five">
-            <button id="fiveBtn">5</button>
-        </div>
-        <div class="buttons" id="six">
-            <button id="sixBtn">6</button>
-        </div>
-        <div class="buttons" id="seven">
-            <button id="sevenBtn">7</button>
-        </div>
-        <div class="buttons" id="eight">
-            <button id="eightBtn">8</button>
-        </div>
-        <div class="buttons" id="nine">
-            <button id="nineBtn">9</button>
-        </div>
-        <div class="buttons" id="decimal">
-            <button id="decimalBtn">.</button>
-        </div>
-        <!-- Operator buttons -->
-        <div class="buttons" id="add">
-            <button id="addBtn">+</button>
-        </div>
-        <div class="buttons" id="subtract">
-            <button id="subtractBtn">-</button>
-        </div>
-        <div class="buttons" id="multiply">
-            <button id="multiplyBtn">×</button>
-        </div>
-        <div class="buttons" id="divide">
-            <button id="divideBtn">÷</button>
-        </div>
-        <div class="buttons" id="equal">
-            <button id="equalBtn">=</button>
-        </div>
-        <div class="buttons" id="clear">
-            <button id="clearBtn">C</button>
-        </div>
+  <div id="calculator-container">
+    <!-- Screen display -->
+    <div id="display">
+      <input type="text" id="previousValue" value="" readonly />
+      <input type="text" id="displayScreen" value="" readonly />
     </div>
+    <!-- first row -->
+    <button class="numButtons" id="sevenBtn">7</button>
+    <button class="numButtons" id="eightBtn">8</button>
+    <button class="numButtons" id="nineBtn">9</button>
+    <button class="span-two" id="clearBtn">C</button>
+    <!-- second row -->
+    <button class="numButtons" id="fourBtn">4</button>
+    <button class="numButtons" id="fiveBtn">5</button>
+    <button class="numButtons" id="sixBtn">6</button>
+    <button class="opButtons" id="multiply">×</button>
+    <button class="opButtons" id="divide">÷</button>
+    <!-- third row -->
+    <button class="numButtons" id="oneBtn">1</button>
+    <button class="numButtons" id="twoBtn">2</button>
+    <button class="numButtons" id="threeBtn">3</button>
+    <button class="opButtons" id="add">+</button>
+    <button class="opButtons" id="subtract">-</button>
+    <!-- fourth row -->
+    <button id="plusMinus">±</button>
+    <button class="numButtons" id="zeroBtn">0</button>
+    <button class="numButtons" id="decimalBtn">.</button>
+    <button class="span-two" id="equalBtn">=</button>
+  </div>
 </body>
+
 </html>
