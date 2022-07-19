@@ -14,11 +14,17 @@ body {
   margin: auto;
 }
 
+#backspaceBtn {
+  font-size: 30px;
+}
+
 button {
   font-size: 50px;
   border: 1px solid black;
   outline: none;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New',
+    Courier,
+    monospace;
 }
 
 button:hover {
