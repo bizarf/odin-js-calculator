@@ -5,6 +5,7 @@ let chosenOperator = null;
 let clearFlag = false;
 let firstValueChosen = false;
 let operatorSign = "";
+let backspaceDisable = false;
 
 // Adds two numbers
 function addNum(a, b) {
@@ -36,7 +37,11 @@ function operate(operator, a, b) {
         case "multiply":
             return (totalValue = multiplyNum(a, b));
         case "divide":
-            return (totalValue = divNum(a, b));
+            if (b === 0) {
+                return totalValue = "error"
+            } else {
+                return (totalValue = divNum(a, b));
+            }
     }
 }
 
@@ -59,6 +64,17 @@ clearBtn.addEventListener("click", () => {
     previousValue.value = "";
     firstValueChosen = false;
     clearFlag = false;
+    backspaceDisable = false;
+    document.querySelectorAll(".opButtons").forEach(button => {
+        button.disabled = false;
+    });
+    document.querySelectorAll(".numButtons").forEach(button => {
+        button.disabled = false;
+    });
+    document.querySelectorAll(".extraFunctions").forEach(button => {
+        button.disabled = false;
+    });
+    equalBtn.disabled = false;
 });
 
 // Operator buttons
@@ -75,6 +91,24 @@ let equalBtn = document.querySelector("#equalBtn");
 equalBtn.addEventListener("click", () => {
     operateResults();
 });
+
+// Plus/minus button
+let plusMinusBtn = document.querySelector("#plusMinus");
+plusMinusBtn.addEventListener("click", () => {
+    if (displayScreen.value[0] > 0 || displayScreen.value[0] < 0) {
+        displayScreen.value = "-" + displayScreen.value
+    } else if (displayScreen.value[0] === "-") {
+        displayScreen.value = displayScreen.value.slice(1)
+    }
+})
+
+// Backspace button
+let backspaceBtn = document.querySelector("#backspaceBtn");
+backspaceBtn.addEventListener("click", () => {
+    if (backspaceDisable === false) {
+        displayScreen.value = displayScreen.value.slice(0, displayScreen.value.length - 1)
+    }
+})
 
 // Function for the number buttons
 function numberBtn(value) {
@@ -104,6 +138,7 @@ function numberBtn(value) {
     } else if (clearFlag === true) {
         displayScreen.value = "";
         clearFlag = false;
+        backspaceDisable = false;
         updateDisplay(value);
     } else if (displayScreen.value.length < 10) {
         updateDisplay(value);
@@ -121,8 +156,8 @@ function operatorBtn(operator, operatorSignValue) {
         displayScreen.value = "";
         updatePreviousDisplay(firstValue, operatorSignValue);
     } else if (firstValueChosen === true) {
+        operateResults();
         chosenOperator = operator;
-        // operateResults();
     }
 }
 
@@ -141,11 +176,27 @@ function operateResults() {
     secondValue = displayScreen.value;
     secondValue = parseFloat(secondValue);
     operate(chosenOperator, firstValue, secondValue);
-    totalRound(totalValue);
-    displayScreen.value = totalValue;
-    updatePreviousDisplay(firstValue, operatorSign, secondValue);
-    firstValue = totalValue;
-    clearFlag = true;
+    if (totalValue === "error") {
+        previousValue.value = `${firstValue} ${operatorSign} ${secondValue} =`;
+        displayScreen.value = "Error";
+        document.querySelectorAll(".opButtons").forEach(button => {
+            button.disabled = true;
+        });
+        document.querySelectorAll(".numButtons").forEach(button => {
+            button.disabled = true;
+        });
+        document.querySelectorAll(".extraFunctions").forEach(button => {
+            button.disabled = true;
+        });
+        equalBtn.disabled = true;
+    } else {
+        totalRound(totalValue);
+        displayScreen.value = totalValue;
+        updatePreviousDisplay(firstValue, operatorSign, secondValue);
+        firstValue = totalValue;
+        clearFlag = true;
+        backspaceDisable = true;
+    }
 }
 
 // Function to update the main display
@@ -162,6 +213,7 @@ function updatePreviousDisplay(firstValue, operatorSign, secondValue) {
     }
 }
 
+// Function to prevent screen overflow
 function totalRound(value) {
     value = value.toFixed(10);
     value = value.substring(0, 10);
